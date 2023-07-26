@@ -1,12 +1,11 @@
-    ; -----------------------------------------------------------
-    ; Lets get the length of the message to output dynamically in the asm code
+    ; -------------------------------------------------------------------------
     ;
     ; To assemble and run:
     ;
     ;  nasm -felf64 gentoo-da-way.asm && ld gentoo-based.o && ./a.out
     ;
     ;
-    ;--------------------------------------------------------------
+    ;--------------------------------------------------------------------------
 
         section .data
 message:
@@ -32,9 +31,9 @@ finished:
 
         mov         rdx, rax                ; RAX now equals the nmber of bytes in the string
         mov         rsi, message            ; rest should be a normal write
-        mov         rax, 1
-        mov         rdi, 1
-        syscall
-        mov         rax, 60
-        xor         rdi, rdi
-        syscall
+        mov         rax, 1                  ; syscall for write
+        mov         rdi, 1                  ; file handle 1 for stdout
+        syscall                             ;
+        mov         rax, 60                 ; syscall for exit
+        xor         rdi, rdi                ; exit code 0
+        syscall                             ; invoke os to exit
