@@ -14,9 +14,9 @@
 
         section         .data
 message1:
-        db              "Gentoo is fire af", 10
+        db              "Gentoo is fire af", 10, 0      ; extra 0 add a null terminating byte
 message2:
-        db              "You need to compile", 10
+        db              "You need to compile", 10, 0
 
         global          _start
 
