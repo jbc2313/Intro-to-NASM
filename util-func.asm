@@ -56,6 +56,24 @@ stpr:
     ret
 
 
+;--------------------------------------------------------
+;  void stprlf(String message)
+;
+;  String print with linefeed function added
+;--------------------------------------------------------
+
+stprlf:
+    call        stpr
+
+    push        rax             ; push rax on stack to preserve it while we use rax in this function
+    mov         rax, 10         ; move 10 into rax - 10 is the ascii char for linefeed
+    push        rax             ; push linefeed on stack so we can get mem address of it
+    mov         rax, rsp        ; move the address of the current stacfk pointer into rax for stpr function
+    call        stpr            ; call String Print function with linefeed
+    pop         rax             ; remove linefeed char from stack
+    pop         rax             ; restore original value of rax before function was called
+    ret
+
 
 ;------------------------------------------------------
 ; void exit()
