@@ -160,13 +160,13 @@ atoi:
     inc         rcx             ; increment RCX ( counter register )
     jmp         .multiplyLoop   ; continue muliply Loop
 
-.finished
+.finished:
     cmp         rcx, 0          ; compare RCX register value against decimal 0 (our counter register is RCX)
     je          .restore        ; if equal to 0, jump to .restore section ( no integer args were passed to atoi )
     mov         rbx, 10         ; move decimal value 10 in RBX
     div         rbx             ; dive RAX by value 10 in RBX
 
-.restore
+.restore:
     pop         rsi             ; restore the values pushed onto stack to preserve while we worked
     pop         rdx             ; * ---
     pop         rcx             ; * ---
